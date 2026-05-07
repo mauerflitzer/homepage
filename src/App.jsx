@@ -1,4 +1,5 @@
-const linkedinUrl = 'https://www.linkedin.com/in/tobias-friedrich-31b486191';
+const linkedinUrl = 'https://www.linkedin.com/in/tobias-friedrich-31b486191/';
+const githubUrl = 'https://github.com/mauerflitzer';
 const email = 'tobias.frieder@gmx.de';
 
 const metrics = [
@@ -13,15 +14,15 @@ const expertise = [
     icon: 'AI',
     title: 'Agentic AI Systems',
     description:
-      'Designing end-to-end AI products that connect cloud infrastructure, large language models, and real business workflows.',
-    tags: ['LLM', 'Agents', 'RAG', 'Product AI']
+      'Designing end-to-end AI products that connect large language models, agent workflows, and real business processes, with Azure as the platform layer when scale and enterprise integration matter.',
+    tags: ['LLM', 'Agents', 'RAG', 'Product AI', 'Azure']
   },
   {
-    icon: 'AZ',
-    title: 'Cloud Platform Leadership',
+    icon: 'CX',
+    title: 'AI Consultancy',
     description:
-      'Leading scalable cloud and SaaS integrations for enterprise adoption, reliability, usability, and long-term platform fit.',
-    tags: ['Microsoft Azure', 'SaaS', 'Integration', 'Scale']
+      'Translating fuzzy AI opportunities into clear product paths, technical tradeoffs, and implementation plans that stakeholders and engineering teams can act on.',
+    tags: ['Consulting', 'Discovery', 'Use Cases', 'Roadmaps']
   },
   {
     icon: 'TL',
@@ -34,6 +35,20 @@ const expertise = [
 
 const projects = [
   {
+    title: 'Genie Platform',
+    label: 'AI platform | Agentic systems',
+    description:
+      'Centralized platform to build, run, and scale GenAI solutions across HR IT. Teams create specialized Genies that automate workflows from user-story generation to test-case creation in one secure, reusable environment.',
+    tags: ['GenAI', 'Agentic Workflows', 'MCP + A2A', 'Secure by Design'],
+    impact: 'Growth | Efficiency | Maturity',
+    meter: 88,
+    variant: 'featured',
+    visual: {
+      src: '/genie-platform.png',
+      alt: 'Genie Platform overview showing a centralized AI platform for many Genies'
+    }
+  },
+  {
     title: 'Global Skills Platform',
     label: 'Bosch | Cloud platform',
     description:
@@ -41,12 +56,7 @@ const projects = [
     tags: ['Azure', 'SaaS Integration', 'Enterprise UX', 'Platform Scale'],
     impact: 'Enterprise adoption',
     meter: 92,
-    variant: 'featured',
-    terminal: [
-      ['platform.users', '400000'],
-      ['integration.mode', 'cloud_native'],
-      ['team.focus', 'skills_growth']
-    ]
+    variant: 'compact'
   },
   {
     title: 'Generative CV Test Data',
@@ -117,6 +127,41 @@ const experience = [
   }
 ];
 
+function GithubIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      <path
+        d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.86 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.9c-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.34 9.34 0 0 1 12 6.96c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.13 10.13 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function LinkedinIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24">
+      <path
+        d="M6.94 8.98H3.75v10.4h3.19V8.98ZM5.35 4A1.86 1.86 0 1 0 5.3 7.72 1.86 1.86 0 0 0 5.35 4Zm14.9 9.42c0-3.13-1.67-4.58-3.9-4.58-1.8 0-2.6.99-3.05 1.68V8.98h-3.06c.04.98 0 10.4 0 10.4h3.18v-5.81c0-.31.02-.62.11-.84.23-.62.76-1.26 1.65-1.26 1.17 0 1.64.95 1.64 2.33v5.58h3.18l.25-5.96Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function SocialLinks({ compact = false }) {
+  return (
+    <div className={compact ? 'social-links compact' : 'social-links'} aria-label="Social links">
+      <a href={githubUrl} rel="noreferrer" target="_blank" aria-label="GitHub profile">
+        <GithubIcon />
+      </a>
+      <a href={linkedinUrl} rel="noreferrer" target="_blank" aria-label="LinkedIn profile">
+        <LinkedinIcon />
+      </a>
+    </div>
+  );
+}
+
 function Header() {
   return (
     <header className="site-header">
@@ -125,13 +170,14 @@ function Header() {
           <span className="brand-mark" aria-hidden="true">
             TF
           </span>
-          <span>Silicon Logic</span>
+          <span>Keep on Learning</span>
         </a>
         <div className="nav-links">
           <a href="#expertise">Expertise</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href={`mailto:${email}`}>Contact</a>
+          <SocialLinks compact />
         </div>
       </nav>
     </header>
@@ -139,6 +185,10 @@ function Header() {
 }
 
 function Hero() {
+  const handleMissingProfileImage = (event) => {
+    event.currentTarget.closest('.profile-photo-wrap')?.classList.add('is-missing');
+  };
+
   return (
     <section className="container hero" id="top">
       <div className="hero-copy">
@@ -160,12 +210,21 @@ function Hero() {
             Download profile PDF
           </a>
         </div>
+        <SocialLinks />
       </div>
 
       <aside className="hero-panel glass-card glow-card" aria-label="Profile summary">
         <div className="avatar-frame">
-          <div className="avatar-initials" aria-label="Portrait placeholder for Tobias Friedrich">
-            TF
+          <div className="profile-photo-wrap">
+            <img
+              className="profile-photo"
+              src="/profile-picture.png"
+              alt="Tobias Friedrich"
+              onError={handleMissingProfileImage}
+            />
+            <div className="profile-photo-fallback" aria-hidden="true">
+              Add profile-picture.jpg
+            </div>
           </div>
           <div className="panel-meta">
             <div className="chip-list">
@@ -249,11 +308,11 @@ function About() {
         <div className="about-card glass-card glow-card">
           <h3>Application intro</h3>
           <p>
-            I like roles where the bar is high and the path is not fully mapped yet: early platform
-            decisions, AI product direction, cross-functional delivery, and engineering systems that
-            need to scale beyond a prototype. For San Francisco and Bay Area teams, I bring a
-            pragmatic European engineering discipline with a founder-friendly bias for shipping,
-            learning, and making complex systems understandable.
+            I like roles where the bar is high, the pace is fast, and the team is always learning:
+            early platform decisions, AI product direction, cross-functional delivery, and systems
+            that need to grow beyond a prototype. I am inspired by the Bay Area mindset of
+            shipping often, testing ideas in the real world, and improving quickly while keeping the
+            engineering thoughtful, reliable, and understandable.
           </p>
         </div>
       </div>
@@ -319,6 +378,18 @@ function Projects() {
             </div>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
+            {project.visual ? (
+              <div className="project-visual" aria-label={`${project.title} visual`}>
+                {project.visual.src ? (
+                  <img src={project.visual.src} alt={project.visual.alt} />
+                ) : (
+                  <>
+                    <span>{project.visual.label}</span>
+                    <strong>{project.title}</strong>
+                  </>
+                )}
+              </div>
+            ) : null}
             <div className="chip-list">
               {project.tags.map((tag) => (
                 <span className="chip" key={tag}>
@@ -403,6 +474,9 @@ function Contact() {
             <a className="button button-secondary" href={linkedinUrl} rel="noreferrer" target="_blank">
               LinkedIn profile
             </a>
+            <a className="button button-secondary" href={githubUrl} rel="noreferrer" target="_blank">
+              GitHub profile
+            </a>
             <a className="button button-secondary" href="/Profile.pdf">
               Profile PDF
             </a>
@@ -421,6 +495,9 @@ function Footer() {
         <div className="footer-links">
           <a href={linkedinUrl} rel="noreferrer" target="_blank">
             LinkedIn
+          </a>
+          <a href={githubUrl} rel="noreferrer" target="_blank">
+            GitHub
           </a>
           <a href={`mailto:${email}`}>Contact</a>
           <a href="/Profile.pdf">Profile PDF</a>
