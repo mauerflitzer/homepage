@@ -1,6 +1,6 @@
 const linkedinUrl = 'https://www.linkedin.com/in/tobias-friedrich-31b486191/';
 const githubUrl = 'https://github.com/mauerflitzer';
-const email = 'tobias.frieder@gmx.de';
+const email = 'me@tobias-friedrich.de';
 
 const metrics = [
   { value: '7+', label: 'Years shipping software' },
